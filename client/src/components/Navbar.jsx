@@ -1,3 +1,5 @@
+// Navbar.jsx
+
 import { IconButton } from "@mui/material";
 import { Search, Person, Menu } from "@mui/icons-material";
 import variables from "../styles/variables.scss";
@@ -7,17 +9,12 @@ import "../styles/Navbar.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { setLogout } from "../redux/state";
 
-
 const Navbar = () => {
   const [dropdownMenu, setDropdownMenu] = useState(false);
-
   const user = useSelector((state) => state.user);
-
   const dispatch = useDispatch();
-
-  const [search, setSearch] = useState("")
-
-  const navigate = useNavigate()
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className="navbar">
@@ -32,11 +29,12 @@ const Navbar = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <IconButton disabled={search === ""}>
-          <Search
-            sx={{ color: variables.pinkred }}
-            onClick={() => {navigate(`/properties/search/${search}`)}}
-          />
+        {/* Update the IconButton here */}
+        <IconButton
+          disabled={search === ""}
+          onClick={() => { navigate(`/properties/search/${search}`) }}
+        >
+          <Search sx={{ color: variables.pinkred }} />
         </IconButton>
       </div>
 
